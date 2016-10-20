@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package apsdad;
+package aps;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author lsfo
  */
-public class ApsClientDAD {
+public class MainClient {
 
     /**
      * @param args the command line arguments
