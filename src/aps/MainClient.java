@@ -5,12 +5,8 @@
  */
 package aps;
 
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -25,33 +21,18 @@ public class MainClient {
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         
-        int serverPort = 8000;
-        String serverIP = "localhost";
-        Socket s = new Socket(serverIP, serverPort);
-
-        ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
-        out.writeObject("Requisição de cliente recebida");
+        String usuario = "thiago@puc-rio.br";
+        ListaMsg lista = new ListaMsg();
+        lista.exibirLista(usuario);
         
-        DataInputStream in = new DataInputStream(s.getInputStream());
-        String data = in.readUTF();
-        System.out.println(data);
         
-        ObjectInputStream inObj = new ObjectInputStream(s.getInputStream());
-        ArrayList lista = (ArrayList)inObj.readObject();
-        displayResult(lista);
+        Mensagem msg = new Mensagem();
+        msg.setRemetente("teste@test.com");
+        msg.setDestinatario("thiago@puc-rio.br");
+        msg.setAssunto("assunto qq");
+        msg.setMensagem("Blá.");
+        
+        EnviaMsg envia = new EnviaMsg();
+        envia.enviar(msg);
     }
-
-    private static void displayResult(ArrayList<Mensagens> lista) {
-        
-        for(int i=0; i<lista.size(); i++){
-            
-            System.out.println(
-                            lista.get(i).getId()+"  "+
-                            lista.get(i).getRemetente()+"   "+
-                            lista.get(i).getDestinatario()+"    "+
-                            lista.get(i).getAssunto()+"     "+
-                            lista.get(i).getMensgem());
-        }
-    }
-    
 }
