@@ -31,7 +31,6 @@ public class EnviaMsg {
         ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
         out.writeObject("enviar");
         
-        out.writeObject(mensagem.getRemetente());
         out.writeObject(mensagem);
     }
 
