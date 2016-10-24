@@ -12,7 +12,7 @@ import java.io.IOException;
  *
  * @author lsfo
  */
-public class MainClient {
+public class MainCliente {
 
     /**
      * @param args the command line arguments
