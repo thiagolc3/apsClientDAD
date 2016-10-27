@@ -28,7 +28,7 @@ public class ListaMsg {
         s = new Socket(serverIP, serverPort);
     }
 
-    public void exibirLista(String usuario) throws IOException, ClassNotFoundException {
+    public ArrayList<Mensagem> listar(String usuario) throws IOException, ClassNotFoundException {
         
         ObjectOutputStream outCommand = new ObjectOutputStream(s.getOutputStream());
         outCommand.writeObject("listar");
@@ -38,16 +38,8 @@ public class ListaMsg {
         
         ObjectInputStream inObj = new ObjectInputStream(s.getInputStream());
         ArrayList<Mensagem> lista = (ArrayList<Mensagem>) inObj.readObject();
-
-        for (int i = 0; i < lista.size(); i++) {
-
-            System.out.println(
-                    lista.get(i).getId() + "    "
-                    + lista.get(i).getRemetente() + "   "
-                    //+ lista.get(i).getDestinatario() + "    "
-                    + lista.get(i).getAssunto() + "     "
-                    + lista.get(i).getMensagem());
-        }
+        
+        return lista;
     }
 
 }
